@@ -1,0 +1,28 @@
+# Build results
+bin/
+obj/
+publish/
+*.user
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
+stub-package/
+temp-extract/
+temp-unpack/
+
+# Test results
+TestResults/
+
+# Output directory (contains downloaded files)
+**/output/**/*
