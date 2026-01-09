@@ -12,7 +12,7 @@ public class RequestThrottler
         await _semaphore.WaitAsync();
         try
         {
-            return action();
+            return await Task.Run(action);
         }
         finally
         {
