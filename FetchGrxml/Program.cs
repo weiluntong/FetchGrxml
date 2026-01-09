@@ -51,6 +51,7 @@ class Program
         {
             string clusterName = kvp.Key;
             var busInCluster = kvp.Value;
+            ConsoleLogger.SetClusterContext(clusterName);
             string endpoint = ConfigHelper.ReadClusterEndpoint(config.ClusterConfigPath, clusterName);
             
             using (var fileCommWcf = new FileCommWCF(endpoint, "FetchGrxml"))

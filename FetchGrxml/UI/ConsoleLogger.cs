@@ -7,9 +7,22 @@ namespace FetchGrxml;
 /// </summary>
 public class ConsoleLogger : IFileServerLogHelper
 {
+    private static readonly AsyncLocal<string?> _currentCluster = new();
+
+    public static void SetClusterContext(string clusterName)
+    {
+        _currentCluster.Value = clusterName;
+    }
+
+    private string GetPrefix()
+    {
+        var cluster = _currentCluster.Value;
+        return string.IsNullOrEmpty(cluster) ? "" : $"[{cluster}] ";
+    }
+
     public void LogException(string message, Exception exception)
     {
-        Console.WriteLine($"[ERROR] {message}: {exception.Message}");
+        Console.WriteLine($"{GetPrefix()}[ERROR] {message}: {exception.Message}");
     }
 
     public void LogDebug(int level, string message)
@@ -19,6 +32,6 @@ public class ConsoleLogger : IFileServerLogHelper
 
     public void LogInfo(string message)
     {
-        Console.WriteLine($"[INFO] {message}");
+        Console.WriteLine($"{GetPrefix()}[INFO] {message}");
     }
 }

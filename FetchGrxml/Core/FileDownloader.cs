@@ -46,13 +46,13 @@ public class FileDownloader
             }
             else
             {
-                ConsoleUI.ShowDownloadError(fileName, result.ActionResult.ToString());
+                ConsoleUI.ShowDownloadError(busNo, fileName, result.ActionResult.ToString());
                 return false;
             }
         }
         catch (Exception ex)
         {
-            ConsoleUI.ShowDownloadError(fileName, ex.Message);
+            ConsoleUI.ShowDownloadError(busNo, fileName, ex.Message);
             return false;
         }
     }

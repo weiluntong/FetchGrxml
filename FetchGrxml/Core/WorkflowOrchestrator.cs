@@ -45,16 +45,16 @@ public class WorkflowOrchestrator
         try
         {
             var files = await scanner.ScanForGrxmlFiles(busNo);
-            ConsoleUI.ShowFilesFound(files.Count);
+            ConsoleUI.ShowFilesFound(busNo, files.Count);
 
             int downloaded = await downloader.DownloadFiles(busNo, files);
-            ConsoleUI.ShowDownloadProgress(downloaded, files.Count);
+            ConsoleUI.ShowDownloadProgress(busNo, downloaded, files.Count);
 
             return downloaded;
         }
         catch (Exception ex)
         {
-            ConsoleUI.ShowBUError(ex.Message);
+            ConsoleUI.ShowBUError(busNo, ex.Message);
             return 0;
         }
     }

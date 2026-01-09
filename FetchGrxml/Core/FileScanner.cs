@@ -55,7 +55,7 @@ public class FileScanner
         }
         catch (Exception ex)
         {
-            ConsoleUI.ShowDirectoryError(path, ex.Message);
+            ConsoleUI.ShowDirectoryError(busNo, path, ex.Message);
         }
     }
 
@@ -63,7 +63,7 @@ public class FileScanner
     {
         if (ExclusionMatcher.ShouldExclude(folderPath, _exclusionPatterns))
         {
-            ConsoleUI.ShowDirectorySkipped(folderPath);
+            ConsoleUI.ShowDirectorySkipped(busNo, folderPath);
             return;
         }
 
